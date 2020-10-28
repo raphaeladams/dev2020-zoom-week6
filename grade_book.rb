@@ -72,8 +72,7 @@ class GradeBookTest < Minitest::Test
   end
   
   def test_add_non_string_student
-    @grade_book.add_grade(29, 80) 
-    # error, can't call to_sym on a non-string
+    assert_raises(NoMethodError) { @grade_book.add_grade(29, 80) }
   end
 
   def test_add_non_number_grade
@@ -90,7 +89,6 @@ class GradeBookTest < Minitest::Test
   end
 
   def test_letter_grade
-    @grade_book.letter_grade("christine") 
-    # error, grade(student) was never defined as a method
+    assert_raises(NoMethodError) { @grade_book.letter_grade("christine") }
   end
 end
