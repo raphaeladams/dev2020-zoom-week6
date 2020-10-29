@@ -76,6 +76,10 @@ class LegoMinifigureTest < Minitest::Test
     ugly_hat = LegoHat.new(4, "orange", "baseball cap")
     lego_minifigure_ugly_hat = LegoMinifigure.new("Ralph", ugly_hat)
     refute lego_minifigure_ugly_hat.is_stylish?
+
+    blue_hat = LegoHat.new(4, "blue", "baseball cap")
+    lego_minifigure_blue_hat = LegoMinifigure.new("Moe", blue_hat)
+    assert lego_minifigure_blue_hat.is_stylish?
   end
 
   def test_swap_hands
