@@ -25,4 +25,9 @@ class LegoItemTest < Minitest::Test
   def test_to_s
     assert_equal @lego_item.to_s, "a 10 gram coffee"
   end
+
+  def test_is_heavy
+    refute @lego_item.is_heavy(10)
+    assert @lego_item.is_heavy(9)
+  end
 end
