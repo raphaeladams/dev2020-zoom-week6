@@ -4,50 +4,76 @@
 require_relative 'parent'
 require_relative 'modules'
 
-class EvolvedCreature1 < Creature
-  attr_reader :att4
+class Dog < Creature
+  attr_reader :breed
 
-  def initialize(att1, att2, att3, att4)
-    super
-    @att4 = att4
-    # add one more hash item
+  def initialize(name, age, breed)
+    super(name, age)
+    @breed = breed
+    @items[:bones] = 3
   end
 
-  def extra_method1
+  def speak
+    puts "#{ @name } says Woof!"
+    yield
   end
 
-  def extra_method2
-  end
-end
-
-class EvolvedCreature2 < Creature
-  attr_reader :att4
-
-  def initialize(att1, att2, att3, att4)
-    super
-    @att4 = att4
-    # add one more hash item
+  def bury_bone
+    if @items[:bones] > 0
+      puts "#{ @name } buries a bone!"
+      @items[:bones] -= 1
+    else
+      puts "#{ @name } has no bones to bury."
+    end
   end
 
-  def extra_method1
-  end
-
-  def extra_method2
+  def wag_tail
+    puts "#{ @name } wags tail"
   end
 end
 
-class EvolvedCreature3 < Creature
-  attr_reader :att4
+class Cat < Creature
+  attr_reader :breed
 
-  def initialize(att1, att2, att3, att4)
-    super
-    @att4 = att4
-    # add one more hash item
+  def initialize(name, age, breed)
+    super(name, age)
+    @breed = breed
+    @items[:string] = 1
   end
 
-  def extra_method1
+  def speak
+    puts "#{ @name } says Meow!"
+    yield
   end
 
-  def extra_method2
+  def play
+    puts "#{ name } plays with string"
+  end
+
+  def scratch
+    puts "#{ @name } scratches the sofa"
+  end
+end
+
+class Alien < Creature
+  attr_reader :home_planet
+
+  def initialize(name, age, num_legs, home_planet)
+    super(name, age, num_legs)
+    @home_planet = home_planet
+    @items[:ray_gun] = 2
+  end
+
+  def speak
+    puts "#{ @name } says 'Take me to your leader!'"
+    yield
+  end
+
+  def attack
+    puts "#{ @name } fires ray guns"
+  end
+
+  def move
+    puts "#{ @name } flies in spaceship"
   end
 end
