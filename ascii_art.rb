@@ -4,7 +4,8 @@
 class AsciiArt
   def self.draw(number)
     output = ""
-    (0..number).each do |i|
+    (1..number).each do |i|
+      (number - i).times { output += " " }
       i.times { output += "*" }
       output += "\n"
     end
