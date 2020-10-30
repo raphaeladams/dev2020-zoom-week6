@@ -31,13 +31,18 @@ class AsciiArtTest < Minitest::Test
   end
 
   def test_center_triangle
-    assert_output("* \n") { print @ascii_art_1 }
-    assert_output(" * \n* * \n") { print @ascii_art_2 }
-    assert_output("  * \n * * \n* * * \n") { print @ascii_art_3 }
-    assert_output("    * \n   * * \n  * * * \n * * * * \n* * * * * \n") { print @ascii_art_5 }
-    assert_output("") { print @ascii_art_0 }
+    # assert_output("* \n") { print @ascii_art_1 }
+    # assert_output(" * \n* * \n") { print @ascii_art_2 }
+    # assert_output("  * \n * * \n* * * \n") { print @ascii_art_3 }
+    # assert_output("    * \n   * * \n  * * * \n * * * * \n* * * * * \n") { print @ascii_art_5 }
+    # assert_output("") { print @ascii_art_0 }
   end
 
   def test_diamond
+    assert_output("* \n") { print @ascii_art_1 }
+    assert_output(" * \n* * \n * \n") { print @ascii_art_2 }
+    assert_output("  * \n * * \n* * * \n * * \n  * \n") { print @ascii_art_3 }
+    assert_output("    * \n   * * \n  * * * \n * * * * \n* * * * * \n * * * * \n  * * * \n   * * \n    * \n") { print @ascii_art_5 }
+    assert_output("") { print @ascii_art_0 }
   end
 end
