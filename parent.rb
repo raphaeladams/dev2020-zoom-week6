@@ -2,6 +2,7 @@
 # Raphael Adams
 
 class Creature
+
   attr_reader :name
   attr_reader :age
   attr_reader :num_legs
@@ -25,23 +26,21 @@ class Creature
 
   def give_item(item, num, recipient)
     gift = item.to_sym
-    if @items.key?(gift) && @items[gift] >= num
-      recipient.items[gift] += num
+    if @items.key?(gift) && @items[gift] >= num && recipient.receive_item(item, num)
       @items[gift] -= num
     else
-      puts "#{ @name } can't give #{ num } #{ item }."
+      puts "#{ @name } can't give #{ num } #{ item } to #{ recipient.name }."
     end
-    # should give_item "know" anything about the other object??
   end
 
-  def receive_item(item, num, giver)
+  def receive_item(item, num)
     gift = item.to_sym
     if @items.key?(gift)
       @items[gift] += num
-      giver.give_item(item, num, self)
+      true
     else
-      puts "#{ @name } can't receive #{ item }."
+      false
     end
-    # should receive_item "know" anything about the other object??
   end
+
 end

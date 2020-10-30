@@ -6,7 +6,9 @@ require_relative 'parent'
 require_relative 'children'
 require_relative 'modules'
 
+
 class OOPsieProjectTest < Minitest::Test
+
   def setup
     @creature_default_legs = Creature.new("Base Creature 4 Legs", 40)
     @creature_set_legs = Creature.new("Base Creature 8 Legs", 45, 8)
@@ -16,6 +18,7 @@ class OOPsieProjectTest < Minitest::Test
     @alien = Alien.new("Roger", 20, 6, "Mars")
   end
 
+
   # Superclass attribute is set correctly after initialization
   def test_superclass_attributes
     assert_equal @creature_default_legs.name, "Base Creature 4 Legs"
@@ -24,9 +27,28 @@ class OOPsieProjectTest < Minitest::Test
     assert_equal @creature_set_legs.num_legs, 8
   end
 
-  # receive() works as expected
 
-  # give() works as expected
+  # receive() works as expected, give() works as expected
+  def test_give_receive
+    refute @cat.receive_item("wines", 10)
+    assert @cat.receive_item("beers", 1)
+
+    assert_output("Brian can't give 6 cookies to Garfield.\n") { @dog.give_item("cookies", 6, @cat) }
+    assert_output("Brian can't give 6 bones to Garfield.\n") { @dog.give_item("bones", 6, @cat) }
+    assert_output("Brian can't give 2 bones to Garfield.\n") { @dog.give_item("bones", 2, @cat) }
+
+    dog_coffees_before = @dog.items[:coffees]
+    cat_coffees_before = @cat.items[:coffees]
+    
+    @dog.give_item("coffees", 1, @cat)
+    assert_equal @dog.items[:coffees], dog_coffees_before - 1
+    assert_equal @cat.items[:coffees], cat_coffees_before + 1
+
+    @cat.give_item("coffees", 1, @dog)
+    assert_equal @dog.items[:coffees], dog_coffees_before
+    assert_equal @cat.items[:coffees], cat_coffees_before
+  end
+
 
   # The output of speak()
   def test_speak
@@ -39,11 +61,13 @@ class OOPsieProjectTest < Minitest::Test
     end
   end
 
+
   # 2 subclass methods
   def test_subclass_methods
     assert_output("Garfield scratches the sofa\n") { @cat.scratch }
     assert_output("Roger flies in spaceship\n") { @alien.move }
   end
+
 
   # 2 module methods
   def test_module_methods
@@ -57,6 +81,7 @@ class OOPsieProjectTest < Minitest::Test
     assert_output("Falling asleep... zzzzz ^.^\n") { @cat.fall_asleep }
   end
 
+
   # A test that uses refute_equal
   def test_bury_bone
     bones_before_bury = @dog.items[:bones]
@@ -65,16 +90,19 @@ class OOPsieProjectTest < Minitest::Test
     refute_equal bones_before_bury, bones_after_bury
   end
 
+
   # A test that uses assert_output
   def test_does_tricks
     assert_output("Does a barrel roll!\n") { @alien.barrel_roll }
     assert_output("Does a somersault!\n") { @dog.somersault }
   end
 
+
   # A test that uses refute_nil
   def test_default_legs
     refute_nil @creature_default_legs.num_legs
   end
+
 
   # A test that uses assert_instance_of
   def test_instances
