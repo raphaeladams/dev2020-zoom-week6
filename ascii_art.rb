@@ -6,7 +6,7 @@ class AsciiArt
     output = ""
     (1..number).each do |i|
       (number - i).times { output += " " }
-      i.times { output += "*" }
+      i.times { output += "* " }
       output += "\n"
     end
     output
