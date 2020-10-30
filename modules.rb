@@ -1,26 +1,32 @@
 # OOPsie Project
 # Raphael Adams
 
-module Module1
-  def method1
+module GetsDressed
+  def clothes
+    @clothes ||= []
   end
 
-  def method2
-  end
-end
-
-module Module2
-  def method1
-  end
-
-  def method2
+  def add_clothes(article)
+    clothes << article
   end
 end
 
-module Module3
-  def method1
+module DoesTricks
+  def barrel_roll
+    puts "Does a barrel roll!"
   end
 
-  def method2
+  def somersault
+    puts "Does a somersault!"
+  end
+end
+
+module WakingAndSleeping
+  def wake_up
+    puts "Wakes up and opens eyes O_O"
+  end
+
+  def fall_asleep
+    puts "Falling asleep... zzzzz ^.^"
   end
 end

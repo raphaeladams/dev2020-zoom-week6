@@ -5,6 +5,10 @@ require_relative 'parent'
 require_relative 'modules'
 
 class Dog < Creature
+
+  include WakingAndSleeping
+  include DoesTricks
+  
   attr_reader :breed
 
   def initialize(name, age, breed)
@@ -33,6 +37,9 @@ class Dog < Creature
 end
 
 class Cat < Creature
+
+  include WakingAndSleeping
+
   attr_reader :breed
 
   def initialize(name, age, breed)
@@ -56,6 +63,11 @@ class Cat < Creature
 end
 
 class Alien < Creature
+
+  include WakingAndSleeping
+  include DoesTricks
+  include GetsDressed
+
   attr_reader :home_planet
 
   def initialize(name, age, num_legs, home_planet)
@@ -64,16 +76,15 @@ class Alien < Creature
     @items[:ray_gun] = 2
   end
 
-  def speak
-    puts "#{ @name } says 'Take me to your leader!'"
-    yield
+  def move
+    puts "#{ @name } flies in spaceship"
   end
 
   def attack
     puts "#{ @name } fires ray guns"
   end
 
-  def move
-    puts "#{ @name } flies in spaceship"
+  def eat
+    puts "#{ @name } eats Reeses Pieces"
   end
 end
