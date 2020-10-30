@@ -58,10 +58,31 @@ class OOPsieProjectTest < Minitest::Test
   end
 
   # A test that uses refute_equal
+  def test_bury_bone
+    bones_before_bury = @dog.items[:bones]
+    @dog.bury_bone
+    bones_after_bury = @dog.items[:bones]
+    refute_equal bones_before_bury, bones_after_bury
+  end
 
   # A test that uses assert_output
+  def test_does_tricks
+    assert_output("Does a barrel roll!\n") { @alien.barrel_roll }
+    assert_output("Does a somersault!\n") { @dog.somersault }
+  end
 
   # A test that uses refute_nil
+  def test_default_legs
+    refute_nil @creature_default_legs.num_legs
+  end
 
   # A test that uses assert_instance_of
+  def test_instances
+    assert_instance_of Creature, @creature_default_legs
+    assert_kind_of Creature, @dog
+    assert_instance_of Dog, @dog
+    assert_instance_of Cat, @cat
+    assert_instance_of Alien, @alien
+  end
+
 end

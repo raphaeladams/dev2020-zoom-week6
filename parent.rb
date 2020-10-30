@@ -5,6 +5,7 @@ class Creature
   attr_reader :name
   attr_reader :age
   attr_reader :num_legs
+  attr_reader :items
 
   def initialize(name, age, num_legs = 4)
     @name = name
