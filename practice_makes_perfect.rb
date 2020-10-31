@@ -14,5 +14,13 @@ def simulate_studying(subject)
 
   end
 
-  puts "Ready for the #{ subject } exam, took #{  study_session_num } sessions."
+  puts "Ready for the #{ subject } exam, took #{  study_session_num } sessions.\n\n"
+end
+
+simulate_studying("math") do |sesh_num| 
+  sesh_num < 3 ? 1 : sesh_num
+end
+
+simulate_studying("geography") do |sesh_num|
+  [sesh_num, 2].min
 end
