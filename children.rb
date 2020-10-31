@@ -12,6 +12,9 @@ class Dog < Creature
   attr_reader :breed
 
   def initialize(name, age, breed)
+    unless breed.is_a? String
+      raise "Invalid, breed must be a String"
+    end
     super(name, age)
     @breed = breed
     @items[:bones] = 3
@@ -43,6 +46,9 @@ class Cat < Creature
   attr_reader :breed
 
   def initialize(name, age, breed)
+    unless breed.is_a? String
+      raise "Invalid, breed must be a String"
+    end
     super(name, age)
     @breed = breed
     @items[:string] = 1
@@ -71,6 +77,9 @@ class Alien < Creature
   attr_reader :home_planet
 
   def initialize(name, age, num_legs, home_planet)
+    unless home_planet.is_a? String
+      raise "Invalid, home planet must be a String"
+    end
     super(name, age, num_legs)
     @home_planet = home_planet
     @items[:ray_gun] = 2

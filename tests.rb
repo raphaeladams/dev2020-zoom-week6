@@ -34,7 +34,7 @@ class OOPsieProjectTest < Minitest::Test
     assert @cat.receive_item("beers", 1)
 
     assert_output("Brian can't give 6 cookies to Garfield.\n") { @dog.give_item("cookies", 6, @cat) }
-    assert_output("Brian can't give 6 bones to Garfield.\n") { @dog.give_item("bones", 6, @cat) }
+    assert_output("Brian can't give 6 beers to Garfield.\n") { @dog.give_item("beers", 6, @cat) }
     assert_output("Brian can't give 2 bones to Garfield.\n") { @dog.give_item("bones", 2, @cat) }
 
     dog_coffees_before = @dog.items[:coffees]
